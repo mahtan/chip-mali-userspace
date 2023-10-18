@@ -6,8 +6,6 @@ sudo apt-get update && sudo apt-get install -y qemu-user-static
 
 sudo rm -rf rootfs/
 
-wget http://opensource.nextthing.co/chippian/rootfs/rootfs.tar.gz
-
 sudo tar -xf rootfs.tar.gz
 rm rootfs.tar.gz
 
@@ -35,11 +33,11 @@ sudo mount -t sysfs     chsys   rootfs/sys
 sudo chroot rootfs /bin/bash <<EOF
 
 echo -e "\
-deb http://ftp.us.debian.org/debian/ jessie main contrib non-free\n\
-deb-src http://ftp.us.debian.org/debian/ jessie main contrib non-free\n\
+deb http://deb.debian.org/debian/ bookworm main contrib non-free-firmware\n\
+deb-src http://deb.debian.org/debian/ bookworm main contrib non-free-firmware\n\
 \n\
-deb http://security.debian.org/ jessie/updates main contrib non-free\n\
-deb-src http://security.debian.org/ jessie/updates main contrib non-free\n\
+deb http://security.debian.org/ bookworm-security main contrib non-free\n\
+deb-src http://security.debian.org/ bookworm-security main contrib non-free\n\
 \n\
 " >/etc/apt/sources.list
 
